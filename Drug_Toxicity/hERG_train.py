@@ -21,7 +21,7 @@ torch.manual_seed(2021)
 np.random.seed(2020)
 
 train_feature = pickle.load(open('./Data_file/train_feature.pkl','rb'))
-train_label = pickle.load(open('./Data_file/ADMET_label.pkl','rb'))
+train_label = pickle.load(open('./Data_file/hERG.pkl','rb'))
 train_feature = torch.tensor(train_feature)
 train_label = torch.tensor(train_label)
 
@@ -102,8 +102,8 @@ def valid_epoch(model, valid_loader, loss_fun):
     epoch_loss = loss / num
     return epoch_loss,accuracy, recall, precision, f_1, t_max
 
-def train(model, train_feature = train_feature, train_label = train_label, mode =0 ):
-    label = train_label[:,mode]
+def train(model, train_feature = train_feature, train_label = train_label):
+    label = train_label
     feature_label = torch.utils.data.TensorDataset(train_feature,label)
     samples_num = len(feature_label)
     split_num = int(0.8 * samples_num)
@@ -189,7 +189,7 @@ if __name__ == '__main__':
     if not os.path.exists(path_dir):
         os.makedirs(path_dir)
 model = MLP().to(DEVICE)
-f_1, acc, epoch ,Threshold = train(model,train_feature,train_label,2)
+f_1, acc, epoch ,Threshold = train(model,train_feature,train_label)
 print("Epoch: ", epoch )
 print("accuracy:" , acc)
 print("F_1_score: ",f_1)
