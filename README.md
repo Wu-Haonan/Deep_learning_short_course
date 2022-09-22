@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="/post_image/Deep_learning/Post.jpg" width="100%">
+</p>
+
 这个代码仓库为博客的深度学习短课提供练习服务，[深度学习短课博客链接](https://wu-haonan.github.io/2022/01/10/Why_and_what.html)。
 
 # MLP练习
